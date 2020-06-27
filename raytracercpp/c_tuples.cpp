@@ -104,3 +104,61 @@ Tuple Tuple::negate(Tuple v){
     n.set_coordinates(x, y, z, v.get_tuple()->coord.w);
     return n;
 }
+
+/*
+ Multiply the vector by a scalar
+ */
+Tuple Tuple::scalar(double &s, Tuple v){
+    Tuple scaled;
+    double x = s * v.get_tuple()->coord.x;
+    double y = s * v.get_tuple()->coord.y;
+    double z = s * v.get_tuple()->coord.z;
+    double w = s * v.get_tuple()->coord.w;
+    
+    scaled.set_coordinates(x, y, z, w);
+    return scaled;
+}
+
+/*
+ Multiply the vector by a fraction
+ */
+
+Tuple Tuple::fraction_vector(double &f, Tuple v){
+    Tuple fract_scaled;
+    double x = f * v.get_tuple()->coord.x;
+    double y = f * v.get_tuple()->coord.y;
+    double z = f * v.get_tuple()->coord.z;
+    double w = f * v.get_tuple()->coord.w;
+    
+    fract_scaled.set_coordinates(x, y, z, w);
+    return fract_scaled;
+
+}
+/*
+ The magnitude of the vector is the length of the vector
+ */
+double Tuple::magnitude(Tuple a){
+    return sqrt(pow(a.get_tuple()->coord.x, 2) + pow(a.get_tuple()->coord.y, 2) + pow(a.get_tuple()->coord.z, 2));
+}
+
+/*
+ Normalization of the vector converting a vector to a unit vector
+ */
+Tuple Tuple::normalize(Tuple a){
+    Tuple n;
+    double m = magnitude(a);
+    double x = a.get_tuple()->coord.x / m;
+    double y = a.get_tuple()->coord.y / m;
+    double z = a.get_tuple()->coord.z / m;
+    double w = a.get_tuple()->coord.w / m;
+    n.set_coordinates(x, y, z, w);
+    return n;
+}
+
+/*
+ Dot product returns a scalar which gives information regarding the relationship
+ between the two vectors
+ */
+double Tuple::dot_product(Tuple a, Tuple b){
+    return (a.get_tuple()->coord.x * b.get_tuple()->coord.x + a.get_tuple()->coord.y * b.get_tuple()->coord.y + a.get_tuple()->coord.z * b.get_tuple()->coord.z + a.get_tuple()->coord.w + b.get_tuple()->coord.w);
+}

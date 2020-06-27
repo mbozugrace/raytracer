@@ -49,6 +49,15 @@ public:
     Tuple sub_vector_from_point(Tuple vect, Tuple point);
     Tuple negate(Tuple vect);
     
+    Tuple scalar(double &s, Tuple v);
+    Tuple fraction_vector(double &f, Tuple v);
+    
+    double magnitude(Tuple a);
+    
+    Tuple normalize(Tuple a);
+    
+    double dot_product(Tuple a, Tuple b);
+    
 private:
     struct coordinates{
         double x, y, z, w;
